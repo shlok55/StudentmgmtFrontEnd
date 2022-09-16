@@ -5,8 +5,7 @@ import { Alert } from "react-bootstrap";
 const Alert = (props) => {
   return (
     props.alert && <Alert variant={props.alert.type}>{props.alert.message}</Alert>
-    // props.alert && <Alert variant={props.alert.type}>{props.alert.message}</Alert>
   )
 }
-
+//ahs
 export default Alert
