@@ -8,62 +8,62 @@ import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
 const AddStudent = () => {
-  
-  const { studentId } = useParams(); 
-  
+
+  const { studentId } = useParams();
+
   const [id, setId] = useState();
   const [name, setName] = useState();
   const [address, setAddress] = useState();
 
-  useEffect(()=>{
-    if(studentId){
+  useEffect(() => {
+    if (studentId) {
       console.log(studentId)
       axios.get(`http://localhost:8080/student/${studentId}`)
-      .then(response => {
-        setAddress(response.data.address)
-        setName(response.data.name)
-        setId(response.data.id)
-      })
+        .then(response => {
+          setAddress(response.data.address)
+          setName(response.data.name)
+          setId(response.data.id)
+        })
     }
   }, [])
 
   const handleSubmit = (e) => {
-    if(studentId){
+    if (studentId) {
       e.preventDefault();
       axios.put(`http://localhost:8080/student/${id}`, {
         id: id,
         name: name,
         address: address
       })
-      .then((response) => {
-        console.log(response);
-      })
+        .then((response) => {
+          console.log(response);
+        })
     } else {
       e.preventDefault();
       axios
-      .post("http://localhost:8080/student", {
-        id: id,
-        name: name,
-        address: address
-      })
-      .then((response) => {
-        console.log(response)
-      });
+        .post("http://localhost:8080/student", {
+          id: id,
+          name: name,
+          address: address
+        })
+        .then((response) => {
+          console.log(response)
+        });
     }
   }
-      
-    
 
 
-    const changeValue = (e) => {
-        if(e.target.name === "id"){
-            setId(e.target.value)
-        } else if(e.target.name === "name"){
-            setName(e.target.value)
-        } else if(e.target.name === "address"){
-            setAddress(e.target.value)
-        }
+
+
+  const changeValue = (e) => {
+    if (e.target.name === "id") {
+      setId(e.target.value)
+    } else if (e.target.name === "name") {
+      setName(e.target.value)
+    } else if (e.target.name === "address") {
+      setAddress(e.target.value)
     }
+  }
 
   return (
     <Container>
@@ -82,12 +82,12 @@ const AddStudent = () => {
           <Form.Label>Address</Form.Label>
           <Form.Control value={address} name="address" onChange={changeValue} type="text" placeholder="Enter Address" />
         </Form.Group>
-        
+
         <Button variant="primary" type="submit">
           Submit
         </Button>
       </Form>
-      </Container>
+    </Container>
   )
 }
 

@@ -16,23 +16,24 @@ import { useState } from 'react';
 
 function App() {
 
-  const [alert, setAlert] = useState({type: 'success', message: "Success"});
-  
+  const [alert, setAlert] = useState({ type: 'success', message: "Success" });
+
   return (
     <div className="App">
       <BrowserRouter>
         <Navigationbar />
-        <Alert alert={alert}/>
+        <Alert alert={alert} />
         <Routes>
-          <Route path='/adddata' element={<AddStudent />}/>
-          <Route path='/studentlist' element={<StudentList />}/>
-          <Route path='/student/:studentId' element={<AddStudent />}/>
+          <Route path='/adddata' element={<AddStudent />} />
+          <Route path='/studentlist' element={<StudentList />} />
+          <Route path='/student/:studentId' element={<AddStudent />} />
         </Routes>
       </BrowserRouter>
+
     </div>
   );
 }
- 
+
 
 
 export default App;
