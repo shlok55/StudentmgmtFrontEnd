@@ -7,5 +7,5 @@ const Alert = (props) => {
     props.alert && <Alert variant={props.alert.type}>{props.alert.message}</Alert>
   )
 }
-
+//yasgd
 export default Alert
